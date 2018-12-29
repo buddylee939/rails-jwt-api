@@ -1,6 +1,10 @@
 # From this [this tutorial](https://www.pluralsight.com/guides/token-based-authentication-with-ruby-on-rails-5-api)
 [heres the github](https://github.com/hggeorgiev/rails-jwt-auth-tutorial/blob/master/README.md)
 
+# [here is another tutorial](https://www.codementor.io/omedale/simple-approach-to-rails-5-api-authentication-with-json-web-token-cpqbgrdo6)
+
+# [one from jordan hudgens](http://www.dailysmarty.com/posts/how-to-use-jwt-authentication-in-a-rails-5-api-app)
+
 - I had to update the lib/json_web_token file
 
 ```
