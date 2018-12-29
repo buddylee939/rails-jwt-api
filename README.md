@@ -1,24 +1,36 @@
-# README
+# From this [this tutorial](https://www.pluralsight.com/guides/token-based-authentication-with-ruby-on-rails-5-api)
+[heres the github](https://github.com/hggeorgiev/rails-jwt-auth-tutorial/blob/master/README.md)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- I had to update the lib/json_web_token file
 
-Things you may want to cover:
+```
+module JsonWebToken
+  def self.encode(payload, exp = 24.hours.from_now)
+    payload[:exp] = exp.to_i
+    JWT.encode(payload, Rails.application.credentials.secret_key_base)
+  end
 
-* Ruby version
+  def self.decode(token)
+    body = JWT.decode(token, Rails.application.credentials.secret_key_base)[0]
+    HashWithIndifferentAccess.new body
+  rescue
+    nil
+  end
+end
+```
 
-* System dependencies
+- in post man, 
 
-* Configuration
+```
+post http://localhost:3000/authenticate
+headers: Content-Type: application/json
+body: {"email":"pep@mail.com","password":"123"}
+```
 
-* Database creation
+- it returned a token for me
+- then 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+get: http://localhost:3000/items
+bearer token: <enter token>
+```
